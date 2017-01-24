@@ -30,20 +30,20 @@ var checkPoints = {
 	"5": [19, 32]
 };
 
-function init(){
+function init() {
 	bindHandlers();
 }
 
-function bindHandlers(){
-	$('#new-gem').on('click', function(){
+function bindHandlers() {
+	$('#new-gem').on('click', function() {
 		placeRock = true;
 		//$('#my-canvas').css( 'cursor', 'url(assets/rock_converted.png), auto' );
 	})
 }
 
 function setup() {
-  bg = loadImage("assets/background.png");
-  rock = loadImage('assets/rock_converted.png');
+	bg = loadImage("assets/background.png");
+	rock = loadImage('assets/rock_converted.png');
 	var canvas = createCanvas(canvasWidth, canvasHeight);
 	init();
 	canvas.parent("#my-canvas");
@@ -71,8 +71,8 @@ function setup() {
 
 function draw() {
 	//need node
-  background(bg);
-	if(placeRock){
+	background(bg);
+	if (placeRock) {
 		image(rock, mouseX, mouseY);
 	}
 	//background(51);
@@ -88,25 +88,27 @@ function draw() {
 	}
 }
 
-function mouseClicked(){
+function mouseClicked() {
 	//return if not in canvas
-	if(mouseX > canvasWidth || mouseX < 0 || mouseY > canvasHeight || mouseY < 0){
+	if (mouseX > canvasWidth || mouseX < 0 || mouseY > canvasHeight || mouseY < 0) {
 		return;
 	}
-	if(placeRock){
+	if (placeRock) {
 		var closest = closestCell(mouseX, mouseY);
-		gems.push(new Gem(closest.x,closest.y))
-		closest.isBlocked = true;
-		placeRock = false;
+		if (!closest.isBlocked) {
+			gems.push(new Gem(closest.x, closest.y))
+			closest.isBlocked = true;
+			placeRock = false;
+		}
 	}
 }
 
-function closestCell(x,y){
+function closestCell(x, y) {
 	var cell = null;
-	$(grid).each(function(){
+	$(grid).each(function() {
 		var modx = x - (x % 20);
 		var mody = y - (y % 20);
-		if(this.x == modx && this.y == mody){
+		if (this.x == modx && this.y == mody) {
 			cell = this;
 			return false;
 		}
@@ -114,22 +116,14 @@ function closestCell(x,y){
 	return cell;
 }
 
-function Gem(colNum, rowNum){
+function Gem(colNum, rowNum) {
 	this.colNum = colNum;
 	this.rowNum = rowNum;
 
 	this.show = function() {
 		this.x = this.colNum;
 		this.y = this.rowNum;
-		//stroke(255);
-
-		//todo:
-		//replace this with background image
-		//doFill ? fill(0, 102, 102) : noFill();
-		//noFill();
-		//fill(0, 102, 102)
 		image(rock, this.x, this.y);
-		//rect(this.x, this.y, w, w);
 	}
 }
 
@@ -145,10 +139,14 @@ function Cell(colNum, rowNum, doFill) {
 		this.y = this.rowNum * w;
 		stroke(255);
 
-		//todo:
-		//replace this with background image
-		doFill ? fill(0, 102, 102) : noFill();
-		//noFill();
+		//temp to tell what blocks are no build
+		if (doFill) {
+			fill(0, 102, 102);
+			this.isBlocked = true;
+		} else {
+			noFill()
+		}
+
 		rect(this.x, this.y, w, w);
 	}
 }
