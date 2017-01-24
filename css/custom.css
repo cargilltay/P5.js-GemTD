@@ -1,3 +1,7 @@
 .menu-item-container h3{
 	text-decoration: underline;
 }
+
+#menu-buttons button{
+	margin-top: 10px;
+}
