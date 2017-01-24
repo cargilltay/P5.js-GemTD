@@ -1,8 +1,11 @@
 var cols, rows;
-var w = 20;
-var grid = [];
 var bg;
 var rock;
+var grid = [];
+var gems = [];
+var w = 20;
+var canvasWidth = 740;
+var canvasHeight = 740;
 var placeRock = false;
 
 //top left, top right, bottom right, bottom left
@@ -41,7 +44,7 @@ function bindHandlers(){
 function setup() {
   bg = loadImage("assets/background.png");
   rock = loadImage('assets/rock_converted.png');
-	var canvas = createCanvas(740, 740);
+	var canvas = createCanvas(canvasWidth, canvasHeight);
 	init();
 	canvas.parent("#my-canvas");
 	cols = floor(width / w);
@@ -63,8 +66,6 @@ function setup() {
 			grid.push(cell)
 		}
 	}
-
-
 }
 
 
@@ -80,25 +81,74 @@ function draw() {
 	for (var i = 0; i < grid.length; i++) {
 		grid[i].show();
 	}
+
+	//show gems
+	for (var i = 0; i < gems.length; i++) {
+		gems[i].show();
+	}
 }
 
 function mouseClicked(){
-	
+	//return if not in canvas
+	if(mouseX > canvasWidth || mouseX < 0 || mouseY > canvasHeight || mouseY < 0){
+		return;
+	}
+	if(placeRock){
+		var closest = closestCell(mouseX, mouseY);
+		gems.push(new Gem(closest.x,closest.y))
+		closest.isBlocked = true;
+		placeRock = false;
+	}
+}
+
+function closestCell(x,y){
+	var cell = null;
+	$(grid).each(function(){
+		var modx = x - (x % 20);
+		var mody = y - (y % 20);
+		if(this.x == modx && this.y == mody){
+			cell = this;
+			return false;
+		}
+	})
+	return cell;
+}
+
+function Gem(colNum, rowNum){
+	this.colNum = colNum;
+	this.rowNum = rowNum;
+
+	this.show = function() {
+		this.x = this.colNum;
+		this.y = this.rowNum;
+		//stroke(255);
+
+		//todo:
+		//replace this with background image
+		//doFill ? fill(0, 102, 102) : noFill();
+		//noFill();
+		//fill(0, 102, 102)
+		image(rock, this.x, this.y);
+		//rect(this.x, this.y, w, w);
+	}
 }
 
 function Cell(colNum, rowNum, doFill) {
 	this.colNum = colNum;
 	this.rowNum = rowNum;
+	this.isBlocked = false;
+	this.x;
+	this.y;
 
 	this.show = function() {
-		var x = this.colNum * w;
-		var y = this.rowNum * w;
+		this.x = this.colNum * w;
+		this.y = this.rowNum * w;
 		stroke(255);
 
 		//todo:
 		//replace this with background image
 		doFill ? fill(0, 102, 102) : noFill();
 		//noFill();
-		rect(x, y, w, w);
+		rect(this.x, this.y, w, w);
 	}
 }
