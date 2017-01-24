@@ -2,6 +2,8 @@ var cols, rows;
 var w = 20;
 var grid = [];
 var bg;
+var rock;
+var placeRock = false;
 
 //top left, top right, bottom right, bottom left
 var startSquare = [
@@ -31,12 +33,14 @@ function init(){
 
 function bindHandlers(){
 	$('#new-gem').on('click', function(){
-		$('#my-canvas').css( 'cursor', 'url(assets/rock_converted.png), auto' );
+		placeRock = true;
+		//$('#my-canvas').css( 'cursor', 'url(assets/rock_converted.png), auto' );
 	})
 }
 
 function setup() {
   bg = loadImage("assets/background.png");
+  rock = loadImage('assets/rock_converted.png');
 	var canvas = createCanvas(740, 740);
 	init();
 	canvas.parent("#my-canvas");
@@ -67,12 +71,19 @@ function setup() {
 function draw() {
 	//need node
   background(bg);
+	if(placeRock){
+		image(rock, mouseX, mouseY);
+	}
 	//background(51);
 
 	//show grid
 	for (var i = 0; i < grid.length; i++) {
 		grid[i].show();
 	}
+}
+
+function mouseClicked(){
+	
 }
 
 function Cell(colNum, rowNum, doFill) {
