@@ -25,9 +25,20 @@ var checkPoints = {
 	"5": [19, 32]
 };
 
+function init(){
+	bindHandlers();
+}
+
+function bindHandlers(){
+	$('#new-gem').on('click', function(){
+		$('#my-canvas').css( 'cursor', 'url(assets/rock_converted.png), auto' );
+	})
+}
+
 function setup() {
-  bg = loadImage("assets/background.jpg");
+  bg = loadImage("assets/background.png");
 	var canvas = createCanvas(740, 740);
+	init();
 	canvas.parent("#my-canvas");
 	cols = floor(width / w);
 	rows = floor(height / w);
@@ -55,8 +66,8 @@ function setup() {
 
 function draw() {
 	//need node
-  //background(bg);
-	background(51);
+  background(bg);
+	//background(51);
 
 	//show grid
 	for (var i = 0; i < grid.length; i++) {
