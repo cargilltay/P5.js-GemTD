@@ -1,6 +1,7 @@
 function Gem(colNum, rowNum) {
 	this.colNum = colNum;
 	this.rowNum = rowNum;
+	this.level;
 
 	this.show = function() {
 		this.x = this.colNum;
