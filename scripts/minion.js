@@ -8,8 +8,15 @@ function Minion(x, y) {
 	this.minimumSpeed;
 	this.livesCost;
 
-	this.update = function(x, y){
-		this.x = x;
-		this.y = y;
+	this.show = function(){
+		
+	}
+
+	this.updatePosition = function() {
+		this.x -= this.speed;
+	}
+
+	this.hasReachEnd = function() {
+		return this.x > this.w;
 	}
 }

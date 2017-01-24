@@ -1,12 +1,15 @@
 var cols, rows;
 var bg;
+var minionImg;
 var rock;
 var grid = [];
 var gems = [];
+var minions = [];
 var w = 20;
 var canvasWidth = 740;
 var canvasHeight = 740;
 var placeRock = false;
+var roundInProgress = false;
 var qualityLevel = 1;
 var difficulty;
 var level;
@@ -58,6 +61,7 @@ function bindHandlers() {
 
 function setup() {
 	bg = loadImage("assets/background.png");
+	minionImg = loadImage("assets/minion.png");
 	rock = loadImage('assets/rock_converted.png');
 	var canvas = createCanvas(canvasWidth, canvasHeight);
 	init();
@@ -83,10 +87,11 @@ function setup() {
 	}
 }
 
-
 function draw() {
-	//need node
+	//need node.js
 	background(bg);
+
+
 	if (placeRock) {
 		image(rock, mouseX, mouseY);
 	}
@@ -100,6 +105,13 @@ function draw() {
 	//show gems
 	for (var i = 0; i < gems.length; i++) {
 		gems[i].show();
+	}
+
+	//show monsters
+	if (roundInProgress) {
+		for (var i = 0; i < minions.length; i++) {
+			minions[i].show();
+		}
 	}
 }
 
@@ -118,6 +130,13 @@ function mouseClicked() {
 	}
 }
 
+function moveMinion() {
+	$(minions).each(function() {
+		this.show();
+		this.updatePosition();
+	})
+}
+
 function updateQuality(level) {
 	var chipped = 0;
 	var flawed = 0;
@@ -127,52 +146,52 @@ function updateQuality(level) {
 
 	switch (level) {
 		case 2:
-		//20g
+			//20g
 			chipped = 70;
 			flawed = 30;
 			break;
 		case 3:
-		//50
+			//50
 			chipped = 60;
 			flawed = 30;
 			normal = 10;
 			break;
 		case 4:
-		//80
+			//80
 			chipped = 50;
 			flawed = 30;
 			normal = 20;
 			break;
 		case 5:
-		//110
+			//110
 			chipped = 50;
 			flawed = 30;
 			normal = 20;
 			flawless = 10;
 			break;
 		case 6:
-		//140
+			//140
 			chipped = 30;
 			flawed = 30;
 			normal = 30;
 			flawless = 10;
 			break;
 		case 7:
-		//170
+			//170
 			chipped = 20;
 			flawed = 30;
 			normal = 30;
 			flawless = 20;
 			break;
 		case 8:
-		//200g
+			//200g
 			chipped = 10;
 			flawed = 30;
 			normal = 30;
 			flawless = 30;
 			break;
 		case 9:
-		//230g
+			//230g
 			flawed = 30;
 			normal = 30;
 			flawless = 30;
