@@ -7,6 +7,21 @@ var w = 20;
 var canvasWidth = 740;
 var canvasHeight = 740;
 var placeRock = false;
+var qualityLevel = 1;
+var difficulty;
+var level;
+var lives;
+var gold;
+var time;
+var score;
+
+var qualityLevels {
+	"chipped": 100,
+	"flawed": 0,
+	"normal": 0,
+	"flawless": 0,
+	"perfect": 0
+}
 
 //top left, top right, bottom right, bottom left
 var startSquare = [
@@ -101,6 +116,74 @@ function mouseClicked() {
 			placeRock = false;
 		}
 	}
+}
+
+function updateQuality(level) {
+	var chipped = 0;
+	var flawed = 0;
+	var normal = 0;
+	var flawless = 0;
+	var perfect = 0;
+
+	switch (level) {
+		case 2:
+		//20g
+			chipped = 70;
+			flawed = 30;
+			break;
+		case 3:
+		//50
+			chipped = 60;
+			flawed = 30;
+			normal = 10;
+			break;
+		case 4:
+		//80
+			chipped = 50;
+			flawed = 30;
+			normal = 20;
+			break;
+		case 5:
+		//110
+			chipped = 50;
+			flawed = 30;
+			normal = 20;
+			flawless = 10;
+			break;
+		case 6:
+		//140
+			chipped = 30;
+			flawed = 30;
+			normal = 30;
+			flawless = 10;
+			break;
+		case 7:
+		//170
+			chipped = 20;
+			flawed = 30;
+			normal = 30;
+			flawless = 20;
+			break;
+		case 8:
+		//200g
+			chipped = 10;
+			flawed = 30;
+			normal = 30;
+			flawless = 30;
+			break;
+		case 9:
+		//230g
+			flawed = 30;
+			normal = 30;
+			flawless = 30;
+			perfect = 10;
+			break;
+	}
+	qualityLevels.chipped = chipped;
+	qualityLevels.flawed = flawed;
+	qualityLevels.normal = normal;
+	qualityLevels.flawless = flawless;
+	qualityLevels.perfect = perfect;
 }
 
 function closestCell(x, y) {
