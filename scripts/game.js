@@ -18,7 +18,7 @@ var gold;
 var time;
 var score;
 
-var qualityLevels {
+var qualityLevels = {
 	"chipped": 100,
 	"flawed": 0,
 	"normal": 0,
