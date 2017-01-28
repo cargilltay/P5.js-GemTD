@@ -40,14 +40,6 @@ var endSquare = [
 	[28, 37]
 ];
 
-var checkPoints = {
-	"1": [5, 19],
-	"2": [32, 19],
-	"3": [32, 5],
-	"4": [19, 5],
-	"5": [19, 32]
-};
-
 function init() {
 	bindHandlers();
 }
@@ -73,16 +65,32 @@ function setup() {
 	for (var i = 0; i < rows; i++) {
 		for (var j = 0; j < cols; j++) {
 			//var rgb = [255, 255, 255];
-			var fill = false;;
-			for (var key in checkPoints) {
-				var cp = checkPoints[key];
-				if (cp[0] == i && cp[1] == j) {
-					fill = true;
-					break;
-				}
-			}
-			var cell = new Cell(i, j, fill);
-			grid.push(cell)
+			// $(checkPoints).each(function(){
+			// 	$(this).each(function(){
+			// 		console.log(this)
+			// 	})
+			// })
+			$(checkPoints).each(function() {
+					var point = this;
+					var fill = false;
+					$(point).each(function() {
+						var c = this;
+						if (c[0] == i && c[1] == j) {
+							fill = true;
+							return false;
+						}
+					})
+					var cell = new Cell(i, j, fill);
+					grid.push(cell)
+				})
+				// for (var i in checkPoints) {
+				// 	for (var cell in checkPoints[key]) {
+				// 		if (cell[0] == i && cell[1] == j) {
+				// 			fill = true;
+				// 			break;
+				// 		}
+				// 	}
+				// }
 		}
 	}
 }
