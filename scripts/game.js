@@ -26,19 +26,16 @@ var qualityLevels = {
 	"perfect": 0
 }
 
-//top left, top right, bottom right, bottom left
-var startSquare = [
-	[0, 0],
-	[10, 0],
-	[10, 7],
-	[0, 7]
-];
-var endSquare = [
-	[28, 28],
-	[37, 28],
-	[37, 37],
-	[28, 37]
-];
+//in order 0 to 5 + end
+var minionDestinations = [
+	[140, 100],
+	[140, 400],
+	[560, 400],
+	[560, 140],
+	[340, 140],
+	[340, 600],
+	[740, 600],
+]
 
 function init() {
 	bindHandlers();
@@ -82,7 +79,6 @@ function setup() {
 	//add minions
 	var offset = 0;
 	for (var i = 0; i < numMinions; i++) {
-
 		var m = new Minion(offset);
 		minions.push(m);
 		offset += 40;
