@@ -1,11 +1,11 @@
 var cols, rows;
 var bg;
-var minionImg;
 var rock;
 var grid = [];
 var gems = [];
 var minions = [];
 var w = 20;
+var numMinions = 10;
 var canvasWidth = 740;
 var canvasHeight = 740;
 var placeRock = false;
@@ -53,7 +53,6 @@ function bindHandlers() {
 
 function setup() {
 	bg = loadImage("assets/background.png");
-	minionImg = loadImage("assets/minion.png");
 	rock = loadImage('assets/rock_converted.png');
 	var canvas = createCanvas(canvasWidth, canvasHeight);
 	init();
@@ -64,34 +63,29 @@ function setup() {
 	//populate grid
 	for (var i = 0; i < rows; i++) {
 		for (var j = 0; j < cols; j++) {
-			//var rgb = [255, 255, 255];
-			// $(checkPoints).each(function(){
-			// 	$(this).each(function(){
-			// 		console.log(this)
-			// 	})
-			// })
 			$(checkPoints).each(function() {
-					var point = this;
-					var fill = false;
-					$(point).each(function() {
-						var c = this;
-						if (c[0] == i && c[1] == j) {
-							fill = true;
-							return false;
-						}
-					})
-					var cell = new Cell(i, j, fill);
-					grid.push(cell)
+				var point = this;
+				var fill = false;
+				$(point).each(function() {
+					var c = this;
+					if (c[0] == i && c[1] == j) {
+						fill = true;
+						return false;
+					}
 				})
-				// for (var i in checkPoints) {
-				// 	for (var cell in checkPoints[key]) {
-				// 		if (cell[0] == i && cell[1] == j) {
-				// 			fill = true;
-				// 			break;
-				// 		}
-				// 	}
-				// }
+				var cell = new Cell(i, j, fill);
+				grid.push(cell)
+			})
 		}
+	}
+
+	//add minions
+	var offset = 0;
+	for (var i = 0; i < numMinions; i++) {
+
+		var m = new Minion(offset);
+		minions.push(m);
+		offset += 40;
 	}
 }
 
@@ -116,11 +110,9 @@ function draw() {
 	}
 
 	//show monsters
-	if (roundInProgress) {
-		for (var i = 0; i < minions.length; i++) {
-			minions[i].show();
-		}
-	}
+	//if (roundInProgress) {
+		moveMinions()
+	//}
 }
 
 function mouseClicked() {
@@ -138,7 +130,7 @@ function mouseClicked() {
 	}
 }
 
-function moveMinion() {
+function moveMinions() {
 	$(minions).each(function() {
 		this.show();
 		this.updatePosition();
