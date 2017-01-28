@@ -27,15 +27,6 @@ var qualityLevels = {
 }
 
 //in order 0 to 5 + end
-var minionDestinations = [
-	[140, 100],
-	[140, 400],
-	[560, 400],
-	[560, 140],
-	[340, 140],
-	[340, 600],
-	[740, 600],
-]
 
 function init() {
 	bindHandlers();
@@ -81,7 +72,7 @@ function setup() {
 	for (var i = 0; i < numMinions; i++) {
 		var m = new Minion(offset);
 		minions.push(m);
-		offset += 40;
+		offset -= 40;
 	}
 }
 
