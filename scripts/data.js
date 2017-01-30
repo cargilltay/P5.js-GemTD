@@ -1,4 +1,12 @@
 
+var qualityLevels = {
+	"chipped": 100,
+	"flawed": 0,
+	"normal": 0,
+	"flawless": 0,
+	"perfect": 0
+}
+
 var minionDestinations = [
 	[140, 100],
 	[140, 400],

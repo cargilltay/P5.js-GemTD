@@ -9,3 +9,8 @@
 #chance-panels {
 	margin-top: 10px;
 }
+
+.gem-percents ul{
+	list-style: none;
+	padding: 0;
+}

@@ -18,18 +18,16 @@ var gold;
 var time;
 var score;
 
-var qualityLevels = {
-	"chipped": 100,
-	"flawed": 0,
-	"normal": 0,
-	"flawless": 0,
-	"perfect": 0
-}
+var uiManager = new UIManager();
 
-//in order 0 to 5 + end
 
 function init() {
 	bindHandlers();
+	setupUI();
+}
+
+function setupUI() {
+	uiManager.init();
 }
 
 function bindHandlers() {
@@ -98,8 +96,8 @@ function draw() {
 
 	//show monsters
 	//if (roundInProgress) {
-		moveMinions()
-	//}
+	moveMinions()
+		//}
 }
 
 function mouseClicked() {
