@@ -19,9 +19,12 @@ var time;
 var score;
 
 var uiManager = new UIManager();
+var curQualities = new QualityManager();
+var nextQualities = new QualityManager();
 
 
 function init() {
+	nextQualities.updateQuality(2);
 	bindHandlers();
 	setupUI();
 }
@@ -105,10 +108,14 @@ function mouseClicked() {
 	if (mouseX > canvasWidth || mouseX < 0 || mouseY > canvasHeight || mouseY < 0) {
 		return;
 	}
+
+	//place rock (random gem)
 	if (placeRock) {
 		var closest = closestCell(mouseX, mouseY);
 		if (!closest.isBlocked) {
-			gems.push(new Gem(closest.x, closest.y))
+			var newGem = new Gem(closest.x, closest.y);
+			newGem.init();
+			gems.push(newGem)
 			closest.isBlocked = true;
 			placeRock = false;
 		}
@@ -120,74 +127,6 @@ function moveMinions() {
 		this.show();
 		this.updatePosition();
 	})
-}
-
-function updateQuality(level) {
-	var chipped = 0;
-	var flawed = 0;
-	var normal = 0;
-	var flawless = 0;
-	var perfect = 0;
-
-	switch (level) {
-		case 2:
-			//20g
-			chipped = 70;
-			flawed = 30;
-			break;
-		case 3:
-			//50
-			chipped = 60;
-			flawed = 30;
-			normal = 10;
-			break;
-		case 4:
-			//80
-			chipped = 50;
-			flawed = 30;
-			normal = 20;
-			break;
-		case 5:
-			//110
-			chipped = 50;
-			flawed = 30;
-			normal = 20;
-			flawless = 10;
-			break;
-		case 6:
-			//140
-			chipped = 30;
-			flawed = 30;
-			normal = 30;
-			flawless = 10;
-			break;
-		case 7:
-			//170
-			chipped = 20;
-			flawed = 30;
-			normal = 30;
-			flawless = 20;
-			break;
-		case 8:
-			//200g
-			chipped = 10;
-			flawed = 30;
-			normal = 30;
-			flawless = 30;
-			break;
-		case 9:
-			//230g
-			flawed = 30;
-			normal = 30;
-			flawless = 30;
-			perfect = 10;
-			break;
-	}
-	qualityLevels.chipped = chipped;
-	qualityLevels.flawed = flawed;
-	qualityLevels.normal = normal;
-	qualityLevels.flawless = flawless;
-	qualityLevels.perfect = perfect;
 }
 
 function closestCell(x, y) {

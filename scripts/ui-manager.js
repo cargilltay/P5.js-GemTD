@@ -6,8 +6,8 @@ function UIManager() {
 	this.initChancePanels = function() {
 		$('#current-chances .panel-body').append(this.generateChanceHTML())
 		$('#next-chances .panel-body').append(this.generateChanceHTML())
-		this.updateChancePanel($('#current-chances'), 0);
-		this.updateChancePanel($('#next-chances'), 0);
+		this.updateChancePanel($('#current-chances'), 0,curQualities);
+		this.updateChancePanel($('#next-chances'), 0, nextQualities);
 	}
 
 	this.generateChanceHTML = function() {
@@ -23,11 +23,11 @@ function UIManager() {
 		return chanceHTML;
 	}
 
-	this.updateChancePanel = function(panel, currentUpgrade) {
-		panel.find('.chipped-percent .percent').text(qualityLevels["chipped"] + '%');
-		panel.find('.flawed-percent .percent').text(qualityLevels["flawed"] + '%');
-		panel.find('.normal-percent .percent').text(qualityLevels["normal"] + '%');
-		panel.find('.flawless-percent .percent').text(qualityLevels["flawless"] + '%');
-		panel.find('.perfect-percent .percent').text(qualityLevels["perfect"] + '%');
+	this.updateChancePanel = function(panel, currentUpgrade, qualityType) {
+		panel.find('.chipped-percent .percent').text(qualityType.qualities["chipped"] + '%');
+		panel.find('.flawed-percent .percent').text(qualityType.qualities["flawed"] + '%');
+		panel.find('.normal-percent .percent').text(qualityType.qualities["normal"] + '%');
+		panel.find('.flawless-percent .percent').text(qualityType.qualities["flawless"] + '%');
+		panel.find('.perfect-percent .percent').text(qualityType.qualities["perfect"] + '%');
 	}
 }
