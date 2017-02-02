@@ -1,3 +1,3 @@
-function tower(type){
+function tower(type) {
 	this.type = type;
 }

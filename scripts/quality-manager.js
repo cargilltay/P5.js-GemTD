@@ -1,4 +1,4 @@
-function QualityManager(){
+function QualityManager() {
 
 	this.qualities = {
 		chipped: 100,
@@ -8,19 +8,19 @@ function QualityManager(){
 		perfect: 0,
 	}
 
-	this.sortOnKeys = function(){
+	this.sortOnKeys = function() {
 		var sorted = [];
-    	for(var key in this.qualities) {
-        	sorted[sorted.length] = key;
-    	}
-    	sorted.sort();
+		for (var key in this.qualities) {
+			sorted[sorted.length] = key;
+		}
+		sorted.sort();
 
-    	var tempDict = {};
-    	for(var i = 0; i < sorted.length; i++) {
-        	tempDict[sorted[i]] = this.qualities[sorted[i]];
-    	}
+		var tempDict = {};
+		for (var i = 0; i < sorted.length; i++) {
+			tempDict[sorted[i]] = this.qualities[sorted[i]];
+		}
 
-    	this.qualities = tempDict;
+		this.qualities = tempDict;
 	}
 
 	this.updateQuality = function(level) {
@@ -37,33 +37,33 @@ function QualityManager(){
 				this.qualities.flawed = 30;
 				break;
 			case 3:
-				//50
+				//50g
 				this.qualities.chipped = 60;
 				this.qualities.flawed = 30;
 				this.qualities.normal = 10;
 				break;
 			case 4:
-				//80
+				//80g
 				this.qualities.chipped = 50;
 				this.qualities.flawed = 30;
 				this.qualities.normal = 20;
 				break;
 			case 5:
-				//110
+				//110g
 				this.qualities.chipped = 50;
 				this.qualities.flawed = 30;
 				this.qualities.normal = 20;
 				this.qualities.flawless = 10;
 				break;
 			case 6:
-				//140
+				//140g
 				this.qualities.chipped = 30;
 				this.qualities.flawed = 30;
 				this.qualities.normal = 30;
 				this.qualities.flawless = 10;
 				break;
 			case 7:
-				//170
+				//170g
 				this.qualities.chipped = 20;
 				this.qualities.flawed = 30;
 				this.qualities.normal = 30;

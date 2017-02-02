@@ -6,7 +6,7 @@ function UIManager() {
 	this.initChancePanels = function() {
 		$('#current-chances .panel-body').append(this.generateChanceHTML())
 		$('#next-chances .panel-body').append(this.generateChanceHTML())
-		this.updateChancePanel($('#current-chances'), 0,curQualities);
+		this.updateChancePanel($('#current-chances'), 0, curQualities);
 		this.updateChancePanel($('#next-chances'), 0, nextQualities);
 	}
 

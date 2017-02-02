@@ -22,29 +22,29 @@ function Minion(xOffset) {
 	this.updatePosition = function() {
 		var curDest = minionDestinations[this.destination];
 
-		if(curDest === undefined){
+		if (curDest === undefined) {
 			return;
 		}
 
 		if (curDest[0] == this.pos.x && curDest[1] == this.pos.y) {
 			this.destination++;
 			curDest = minionDestinations[this.destination];
-			if(curDest === undefined) return;
+			if (curDest === undefined) return;
 		}
-		
+
 		//his.vel.add(this.acc);
 		//this.pos.add(this.vel);
 		//this.acc.set(0, 0);
 		//this.pos.y += 1	
 		if (this.pos.x < curDest[0]) {
 			this.pos.x += this.speed;
-		} else if(this.pos.x > curDest[0]){
+		} else if (this.pos.x > curDest[0]) {
 			this.pos.x -= this.speed;
 		}
 
 		if (this.pos.y < curDest[1]) {
 			this.pos.y += this.speed;
-		} else if(this.pos.y > curDest[1]){
+		} else if (this.pos.y > curDest[1]) {
 			this.pos.y -= this.speed;
 		}
 	}

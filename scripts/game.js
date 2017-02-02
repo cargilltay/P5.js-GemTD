@@ -36,7 +36,6 @@ function setupUI() {
 function bindHandlers() {
 	$('#new-gem').on('click', function() {
 		placeRock = true;
-		//$('#my-canvas').css( 'cursor', 'url(assets/rock_converted.png), auto' );
 	})
 }
 
@@ -78,14 +77,12 @@ function setup() {
 }
 
 function draw() {
-	//need node.js
 	background(bg);
 
 
 	if (placeRock) {
 		image(rock, mouseX, mouseY);
 	}
-	//background(51);
 
 	//show grid
 	for (var i = 0; i < grid.length; i++) {
@@ -100,7 +97,7 @@ function draw() {
 	//show monsters
 	//if (roundInProgress) {
 	moveMinions()
-		//}
+	//}
 }
 
 function mouseClicked() {

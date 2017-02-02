@@ -10,7 +10,7 @@ function Gem(colNum, rowNum) {
 		image(rock, this.x, this.y);
 	}
 
-	this.generateType = function(){
+	this.generateType = function() {
 		var randNum = Math.random();
 
 		var tQuality = curQualities;
@@ -20,7 +20,7 @@ function Gem(colNum, rowNum) {
 	}
 
 
-	this.init = function(){
+	this.init = function() {
 		this.type = this.generateType();
 	}
 }
