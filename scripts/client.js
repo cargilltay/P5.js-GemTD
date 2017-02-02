@@ -2,8 +2,6 @@ var cols, rows;
 var bg;
 var rock;
 var grid = [];
-var gems = [];
-var minions = [];
 var w = 20;
 var canvasWidth = 740;
 var canvasHeight = 740;
@@ -63,8 +61,8 @@ function draw() {
 	}
 
 	//show gems
-	for (var i = 0; i < gems.length; i++) {
-		gems[i].show();
+	for (var i = 0; i < game.gems.length; i++) {
+		game.gems[i].show();
 	}
 
 	//show monsters
@@ -77,7 +75,7 @@ function populateMinions() {
 	var offset = 0;
 	for (var i = 0; i < game.numMinions; i++) {
 		var m = new Minion(offset);
-		minions.push(m);
+		game.minions.push(m);
 		offset -= 40;
 	}
 }
@@ -114,7 +112,7 @@ function mouseClicked() {
 		if (!closest.isBlocked) {
 			var newGem = new Gem(closest.x, closest.y);
 			newGem.init();
-			gems.push(newGem)
+			game.gems.push(newGem)
 			closest.isBlocked = true;
 			placeRock = false;
 		}
@@ -122,7 +120,7 @@ function mouseClicked() {
 }
 
 function moveMinions() {
-	$(minions).each(function() {
+	$(game.minions).each(function() {
 		this.show();
 		this.updatePosition();
 	})
