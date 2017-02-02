@@ -32,10 +32,12 @@ function Minion(xOffset) {
 			if (curDest === undefined) return;
 		}
 
-		//his.vel.add(this.acc);
+		//for velocity/accel reuse this
+		//this.vel.add(this.acc);
 		//this.pos.add(this.vel);
 		//this.acc.set(0, 0);
 		//this.pos.y += 1	
+		
 		if (this.pos.x < curDest[0]) {
 			this.pos.x += this.speed;
 		} else if (this.pos.x > curDest[0]) {
