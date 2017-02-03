@@ -7,6 +7,7 @@ var canvasWidth = 740;
 var canvasHeight = 740;
 var placeRock = false;
 var roundInProgress = false;
+var showGrid = true;
 
 var uiManager = new UIManager();
 var curQualities = new QualityManager();
@@ -26,6 +27,11 @@ function setupUI() {
 function bindHandlers() {
 	$('#new-gem').on('click', function() {
 		placeRock = true;
+	})
+
+	$('#show-grid input').on('change', function(){
+		showGrid = this.checked;
+		console.log(showGrid);
 	})
 }
 
@@ -56,8 +62,10 @@ function draw() {
 	}
 
 	//show grid
-	for (var i = 0; i < grid.length; i++) {
-		grid[i].show();
+	if(showGrid){
+		for (var i = 0; i < grid.length; i++) {
+			grid[i].show();
+		}
 	}
 
 	//show gems
