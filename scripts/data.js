@@ -8,6 +8,17 @@ var minionDestinations = [
 	[740, 600],
 ]
 
+var gemTypes = [
+	"Amethyst",
+	"Aquamarine",
+	"Diamond",
+	"Emerald",
+	"Opal",
+	"Ruby",
+	"Sapphire",
+	"Topaz",
+]
+
 var checkPoints = [
 	//0
 	[

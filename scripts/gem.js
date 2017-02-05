@@ -2,6 +2,7 @@ function Gem(colNum, rowNum) {
 	this.colNum = colNum;
 	this.rowNum = rowNum;
 	this.type;
+	this.quality;
 	this.level;
 	this.img = rock;
 	this.isKept = false;
@@ -15,10 +16,29 @@ function Gem(colNum, rowNum) {
 	this.generateType = function() {
 		var randNum = Math.random();
 
-		var tQuality = curQualities;
-		tQuality.sortOnKeys(tQuality);
+		var tManager = curQualities;
+		tManager.sortOnKeys(tManager);
 
-		console.log(tQuality);
+		var tQualities = tManager.qualities;
+
+		//console.log(Object.keys(tQualities).length)
+		var keys = Object.keys(tQualities);
+
+		for (var i = 0; i < keys.length; i++) {
+			var curVal = tQualities[keys[i]]
+			var nextVal = tQualities[keys[i + 1]]
+			if (randNum <= curVal && randNum > nextVal) {
+				this.quality = keys[i];
+				break;
+			}
+		}
+
+		var randTypeNum = Math.floor(Math.random() * gemTypes.length);
+
+		this.type = gemTypes[randTypeNum];
+
+		console.log(this.quality);
+		console.log(this.type);
 	}
 
 

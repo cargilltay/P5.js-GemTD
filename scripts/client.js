@@ -31,7 +31,6 @@ function bindHandlers() {
 
 	$('#show-grid input').on('change', function(){
 		showGrid = this.checked;
-		console.log(showGrid);
 	})
 }
 
@@ -111,7 +110,6 @@ function populateGrid() {
 			grid.push(cell)
 		}
 	}
-	console.log(grid.length);
 }
 
 function mouseClicked() {
