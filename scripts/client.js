@@ -91,21 +91,27 @@ function populateMinions() {
 function populateGrid() {
 	for (var i = 0; i < rows; i++) {
 		for (var j = 0; j < cols; j++) {
+			var fill = false;
 			$(checkPoints).each(function() {
 				var point = this;
-				var fill = false;
+				var continueOn = false;
 				$(point).each(function() {
 					var c = this;
 					if (c[0] == i && c[1] == j) {
 						fill = true;
+						continueOn = true;
 						return false;
 					}
 				})
-				var cell = new Cell(i, j, fill);
-				grid.push(cell)
+				if(continueOn){
+					return false;
+				}
 			})
+			var cell = new Cell(i, j, fill);
+			grid.push(cell)
 		}
 	}
+	console.log(grid.length);
 }
 
 function mouseClicked() {

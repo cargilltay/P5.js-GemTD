@@ -3,11 +3,13 @@ function Gem(colNum, rowNum) {
 	this.rowNum = rowNum;
 	this.type;
 	this.level;
+	this.img = rock;
+	this.isKept = false;
 
 	this.show = function() {
 		this.x = this.colNum;
 		this.y = this.rowNum;
-		image(rock, this.x, this.y);
+		image(this.img, this.x, this.y);
 	}
 
 	this.generateType = function() {
