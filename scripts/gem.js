@@ -21,7 +21,6 @@ function Gem(colNum, rowNum) {
 
 		var tQualities = tManager.qualities;
 
-		//console.log(Object.keys(tQualities).length)
 		var keys = Object.keys(tQualities);
 
 		for (var i = 0; i < keys.length; i++) {
@@ -36,6 +35,8 @@ function Gem(colNum, rowNum) {
 		var randTypeNum = Math.floor(Math.random() * gemTypes.length);
 
 		this.type = gemTypes[randTypeNum];
+
+		this.img = loadImage("assets/gems/" + this.quality + this.type + ".jpg")
 
 		console.log(this.quality);
 		console.log(this.type);
