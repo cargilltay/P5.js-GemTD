@@ -70,6 +70,7 @@ function draw() {
 	//show gems
 	for (var i = 0; i < game.gems.length; i++) {
 		game.gems[i].show();
+		game.gems[i].fireProjectiles();
 	}
 
 	//show monsters
