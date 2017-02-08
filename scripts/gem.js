@@ -6,11 +6,13 @@ function Gem(colNum, rowNum) {
 	this.level;
 	this.img = rock;
 	this.isKept = false;
+	this.radius = 100;
 
 	this.show = function() {
 		this.x = this.colNum;
 		this.y = this.rowNum;
 		image(this.img, this.x, this.y);
+		ellipse(this.x + 10, this.y + 10, this.radius, this.radius);
 	}
 
 	this.generateType = function() {
