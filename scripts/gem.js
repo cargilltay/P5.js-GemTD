@@ -36,7 +36,7 @@ function Gem(colNum, rowNum) {
 
 		this.type = gemTypes[randTypeNum];
 
-		this.img = loadImage("assets/gems/" + this.quality + this.type + ".jpg")
+		this.img = loadImage("assets/gems/" + this.quality + this.type + ".png")
 
 		console.log(this.quality);
 		console.log(this.type);
