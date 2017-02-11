@@ -29,7 +29,7 @@ function bindHandlers() {
 		placeRock = true;
 	})
 
-	$('#show-grid input').on('change', function(){
+	$('#show-grid input').on('change', function() {
 		showGrid = this.checked;
 	})
 }
@@ -61,7 +61,7 @@ function draw() {
 	}
 
 	//show grid
-	if(showGrid){
+	if (showGrid) {
 		for (var i = 0; i < grid.length; i++) {
 			grid[i].show();
 		}
@@ -103,7 +103,7 @@ function populateGrid() {
 						return false;
 					}
 				})
-				if(continueOn){
+				if (continueOn) {
 					return false;
 				}
 			})
