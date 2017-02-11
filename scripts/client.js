@@ -15,7 +15,7 @@ var nextQualities = new QualityManager();
 var game = new Game();
 
 function init() {
-	nextQualities.updateQuality(2);
+	nextQualities.updateQuality(game.gemQuality + 1);
 	bindHandlers();
 	setupUI();
 }
@@ -31,6 +31,21 @@ function bindHandlers() {
 
 	$('#show-grid input').on('change', function() {
 		showGrid = this.checked;
+	})
+
+	$('#upgrade-chances').on('click', function(){
+		//mvp --> future
+		//reduce redundance of gemQuality
+
+		//add if gold < price return;
+		//update config quality
+		game.gemQuality++;
+		curQualities.updateQuality(game.gemQuality);
+		nextQualities.updateQuality(game.gemQuality + 1);
+
+		//update ui quality
+		uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities);
+		uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities);
 	})
 }
 

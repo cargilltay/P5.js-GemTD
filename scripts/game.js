@@ -5,6 +5,7 @@ function Game() {
 	this.time;
 	this.score;
 	this.difficulty;
+	this.gemQuality = 1;
 	this.numMinions = 10;
 	this.gems = [];
 	this.minions = [];
