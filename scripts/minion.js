@@ -3,7 +3,8 @@ function Minion(xOffset) {
 	this.vel = createVector(0, 0);
 	this.acc = createVector(0, 0);
 	this.img = loadImage("assets/minion.png");
-	this.hitpoints;
+	this.hitPoints = 90;
+	this.isDead = false;
 	this.speed = 5;
 	this.armor;
 	this.weakness;
@@ -15,6 +16,11 @@ function Minion(xOffset) {
 		fill(255);
 		stroke(255);
 		image(this.img, this.pos.x, this.pos.y);
+
+		if(this.hitpoints < 90){
+			rect(this.pos.x, this.pos.y + 5, this.w, 2)
+		}
+
 		this.w = this.img.width;
 		this.h = this.img.height;
 	}

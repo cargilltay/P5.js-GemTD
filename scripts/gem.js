@@ -41,8 +41,6 @@ function Gem(colNum, rowNum) {
 				_this.projectiles.push(proj);
 
 				//proj.show();
-
-				console.log("in range")
 				_this.hasTarget = true;
 			}
 		})
@@ -53,10 +51,13 @@ function Gem(colNum, rowNum) {
 		var pNum = 0;
 
 		$(this.projectiles).each(function() {
+			if(this.target == null){
+				return;
+			}
 			this.show();
 			this.updatePosition();
 
-			if (this.hitTarget) {
+			if (this.hitTarget || this.target.isDead) {
 				_this.projectiles.splice(pNum, 1);
 				this.target = null;
 				this.hasTarget = false;

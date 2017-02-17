@@ -148,9 +148,16 @@ function mouseClicked() {
 }
 
 function moveMinions() {
+	var minionNum = 0;
 	$(game.minions).each(function() {
+		if(this.isDead){
+			console.log("dead")
+			game.minions.splice(minionNum, 1)
+			return;
+		}
 		this.show();
 		this.updatePosition();
+		minionNum++;
 	})
 }
 
