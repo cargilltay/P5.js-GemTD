@@ -33,6 +33,7 @@ function UIManager() {
 			}
 		}
 
+		//test
 		panel.find('.chipped-percent .percent').text(qualityType.qualities["chipped"] + '%');
 		panel.find('.flawed-percent .percent').text(qualityType.qualities["flawed"] + '%');
 		panel.find('.normal-percent .percent').text(qualityType.qualities["normal"] + '%');
