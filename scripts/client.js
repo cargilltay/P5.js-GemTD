@@ -42,10 +42,12 @@ function bindHandlers() {
 		game.gemQuality++;
 		curQualities.updateQuality(game.gemQuality);
 		nextQualities.updateQuality(game.gemQuality + 1);
+		var curCost = upgradeCosts[game.gemQuality];
+		var nexCost = upgradeCosts[game.gemQuality - 1]
 
 		//update ui quality
-		uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities);
-		uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities);
+		uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities, curCost);
+		uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities, nexCost);
 	})
 }
 

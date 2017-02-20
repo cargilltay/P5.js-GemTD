@@ -6,8 +6,8 @@ function UIManager() {
 	this.initChancePanels = function() {
 		$('#current-chances .panel-body').append(this.generateChanceHTML())
 		$('#next-chances .panel-body').append(this.generateChanceHTML())
-		this.updateChancePanel($('#current-chances'), 0, curQualities);
-		this.updateChancePanel($('#next-chances'), 0, nextQualities);
+		this.updateChancePanel($('#current-chances'), 0, curQualities, null);
+		this.updateChancePanel($('#next-chances'), 0, nextQualities, upgradeCosts[0]);
 	}
 
 	this.generateChanceHTML = function() {
@@ -23,11 +23,16 @@ function UIManager() {
 		return chanceHTML;
 	}
 
-	this.updateChancePanel = function(panel, currentUpgrade, qualityType) {
-		//append once for max chance check
-		if(currentUpgrade == 9){
-			panel.find('.panel-body').prepend('<h6 class="error-text" >MAX CHANCES!</h6>');
+	this.updateChancePanel = function(panel, currentUpgrade, qualityType, cost) {
+		if (panel.attr('id') == "next-chances") {
+			if (cost) {
+				panel.find('.panel-title .cost').text(cost + 'g');
+			}
+			if (currentUpgrade == 9) {
+				panel.find('.panel-body').prepend('<h6 class="error-text">MAX CHANCES!</h6>');
+			}
 		}
+
 		panel.find('.chipped-percent .percent').text(qualityType.qualities["chipped"] + '%');
 		panel.find('.flawed-percent .percent').text(qualityType.qualities["flawed"] + '%');
 		panel.find('.normal-percent .percent').text(qualityType.qualities["normal"] + '%');
