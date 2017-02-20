@@ -10,25 +10,28 @@ function QualityManager() {
 	}
 
 	this.sortOnKeys = function() {
-		var sorted = [];
-		for (var key in this.qualities) {
-			sorted[sorted.length] = key;
-		}
-		sorted.sort();
+		var sortable = [];
+		for (var q in this.qualities)
+			sortable.push([q, this.qualities[q]])
+
+		//make array of sorted quality values
+		sortable.sort(function(a, b) {
+			return a[1] - b[1]
+		})
 
 		var tempDict = {};
-		for (var i = 0; i < sorted.length; i++) {
-			tempDict[sorted[i]] = this.qualities[sorted[i]];
+		for (var i = 0; i < sortable.length; i++) {
+			tempDict[sortable[i][0]] = sortable[i][1]
 		}
 
 		this.qualities = tempDict;
 	}
 
 	this.updateQuality = function(level) {
-		if(this.isMax == true){
+		if (this.isMax == true) {
 			return;
 		}
-		
+
 
 		switch (level) {
 			case level < 9:

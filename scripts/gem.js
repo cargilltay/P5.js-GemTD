@@ -51,7 +51,7 @@ function Gem(colNum, rowNum) {
 		var pNum = 0;
 
 		$(this.projectiles).each(function() {
-			if(this.target == null){
+			if (this.target == null) {
 				return;
 			}
 			this.show();
@@ -68,7 +68,7 @@ function Gem(colNum, rowNum) {
 	}
 
 	this.generateType = function() {
-		var randNum = Math.random();
+		var randNum = Math.random() * 100;
 
 		var tManager = curQualities;
 		tManager.sortOnKeys(tManager);
@@ -77,13 +77,19 @@ function Gem(colNum, rowNum) {
 
 		var keys = Object.keys(tQualities);
 
+		//hard to figure this out but:
+		//1. sort qualities by chance
+		//2. if our randNum is less than lowest quality (say 20), choose it
+		//3. if our random isnt, add the next chance and try again
+		//(20 + 20 = 40) this is a 2, 20% chance situation etc
+		var chance = tQualities[keys[0]]
 		for (var i = 0; i < keys.length; i++) {
-			var curVal = tQualities[keys[i]]
-			var nextVal = tQualities[keys[i + 1]]
-			if (randNum <= curVal && randNum > nextVal) {
+			if (randNum <= chance) {
 				this.quality = keys[i];
+				console.log(chance)
 				break;
 			}
+			chance += tQualities[keys[i + 1]];
 		}
 
 		var randTypeNum = Math.floor(Math.random() * gemTypes.length);
@@ -92,8 +98,8 @@ function Gem(colNum, rowNum) {
 
 		this.img = loadImage("assets/gems/" + this.quality + this.type + ".png")
 
-		console.log(this.quality);
-		console.log(this.type);
+		//console.log(this.quality);
+		//console.log(this.type);
 	}
 
 
