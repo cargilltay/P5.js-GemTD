@@ -27,9 +27,9 @@ function Gem(colNum, rowNum) {
 		//}
 
 		var _this = this;
-		var xOffsetLeft = this.x - 60;
+		var xOffsetLeft = this.x - 40;
 		var xOffsetRight = this.x + 60;
-		var yOffsetDown = this.y - 60;
+		var yOffsetDown = this.y - 40;
 		var yOffsetUp = this.y + 60;
 
 		$(game.minions).each(function() {
