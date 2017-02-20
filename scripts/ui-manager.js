@@ -24,6 +24,10 @@ function UIManager() {
 	}
 
 	this.updateChancePanel = function(panel, currentUpgrade, qualityType) {
+		//append once for max chance check
+		if(currentUpgrade == 9){
+			panel.find('.panel-body').prepend('<h6 class="error-text" >MAX CHANCES!</h6>');
+		}
 		panel.find('.chipped-percent .percent').text(qualityType.qualities["chipped"] + '%');
 		panel.find('.flawed-percent .percent').text(qualityType.qualities["flawed"] + '%');
 		panel.find('.normal-percent .percent').text(qualityType.qualities["normal"] + '%');

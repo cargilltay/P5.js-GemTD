@@ -1,4 +1,5 @@
 function QualityManager() {
+	this.isMax = false;
 
 	this.qualities = {
 		chipped: 100,
@@ -24,13 +25,18 @@ function QualityManager() {
 	}
 
 	this.updateQuality = function(level) {
-		this.qualities.chipped = 0;
-		this.qualities.flawed = 0;
-		this.qualities.normal = 0;
-		this.qualities.flawless = 0;
-		this.qualities.perfect = 0;
+		if(this.isMax == true){
+			return;
+		}
+		
 
 		switch (level) {
+			case level < 9:
+				this.qualities.chipped = 0;
+				this.qualities.flawed = 0;
+				this.qualities.normal = 0;
+				this.qualities.flawless = 0;
+				this.qualities.perfect = 0;
 			case 2:
 				//20g
 				this.qualities.chipped = 70;
@@ -82,6 +88,7 @@ function QualityManager() {
 				this.qualities.normal = 30;
 				this.qualities.flawless = 30;
 				this.qualities.perfect = 10;
+				this.isMax = true;
 				break;
 		}
 	}
