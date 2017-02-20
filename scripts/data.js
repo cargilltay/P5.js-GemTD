@@ -8,6 +8,17 @@ var minionDestinations = [
 	[740, 600],
 ]
 
+var upgradeCosts = [
+	20, //level 2
+	50, //level 3
+	80, //so on...
+	110, 
+	140, 
+	170, 
+	200, 
+	230,
+]
+
 var gemTypes = [
 	"Amethyst",
 	"Aquamarine",
