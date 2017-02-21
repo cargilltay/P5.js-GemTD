@@ -17,6 +17,16 @@ function UIManager() {
 
 	}
 
+
+
+	this.mapIntToDifficulty = function(enumInt) {
+		for (var i in Difficulty) {
+			if (Difficulty.hasOwnProperty(i) && Difficulty[i] === enumInt) {
+				return Difficulty[i];
+			}
+		}
+	}
+
 	this.bindEventHandlers = function() {
 		var _this = this;
 		$('#new-gem').on('click', function() {
@@ -29,7 +39,9 @@ function UIManager() {
 
 		$('#game-menu-options a').on('click', function() {
 			$('#game-menu').hide()
-			uiManager.controlMenuButtons(false)
+			_this.controlMenuButtons(false)
+			var difficulty = _this.mapIntToDifficulty($(this).data('difficulty'))
+			game.init(difficulty)
 			game.hasBegun = true;
 		})
 
@@ -46,8 +58,8 @@ function UIManager() {
 			var nexCost = upgradeCosts[game.gemQuality - 1]
 
 			//update ui quality
-			uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities, curCost);
-			uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities, nexCost);
+			_this.updateChancePanel($('#current-chances'), game.gemQuality, curQualities, curCost);
+			_this.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities, nexCost);
 		})
 	}
 

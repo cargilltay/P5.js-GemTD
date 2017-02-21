@@ -13,7 +13,6 @@ var game = new Game();
 
 function init() {
 	nextQualities.updateQuality(game.gemQuality + 1);
-	//bindHandlers();
 	setupUI();
 }
 

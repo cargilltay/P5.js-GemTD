@@ -8,6 +8,14 @@ var minionDestinations = [
 	[740, 600],
 ]
 
+var Difficulty = {
+	Easy: 1,
+	Normal: 2,
+	Hard: 3,
+	Extreme: 4,
+	Survival: 5,
+}
+
 var upgradeCosts = [
 	20, //level 2
 	50, //level 3
