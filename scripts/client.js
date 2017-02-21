@@ -33,7 +33,13 @@ function bindHandlers() {
 		showGrid = this.checked;
 	})
 
-	$('#upgrade-chances').on('click', function(){
+	$('#game-menu-options a').on('click', function(){
+		$('#game-menu').hide()
+		uiManager.controlMenuButtons(false)
+		game.hasBegun = true;
+	})
+
+	$('#upgrade-chances').on('click', function() {
 		//mvp --> future
 		//reduce redundance of gemQuality
 
@@ -70,8 +76,12 @@ function setup() {
 }
 
 function draw() {
+
 	background(bg);
 
+	if (!game.hasBegun) {
+		return;
+	}
 
 	if (placeRock) {
 		image(rock, mouseX, mouseY);
@@ -152,7 +162,7 @@ function mouseClicked() {
 function moveMinions() {
 	var minionNum = 0;
 	$(game.minions).each(function() {
-		if(this.isDead){
+		if (this.isDead) {
 			console.log("dead")
 			game.minions.splice(minionNum, 1)
 			return;

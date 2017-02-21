@@ -18,3 +18,15 @@
 .error-text {
 	color: red;
 }
+
+#game-menu{
+	position: absolute;
+	top: 0;
+	padding-bottom: 10px;
+	left:50%;
+}
+
+#game-menu-options a{
+	width:100%;
+	margin-top: 10px;
+}

@@ -1,6 +1,16 @@
 function UIManager() {
 	this.init = function() {
+		this.controlMenuButtons(true);
 		this.initChancePanels();
+		this.showGameMenu();
+	}
+
+	this.controlMenuButtons = function(disabled){
+		$('#menu-buttons button').prop("disabled", disabled);
+	}
+
+	this.showGameMenu = function(){
+
 	}
 
 	this.initChancePanels = function() {
