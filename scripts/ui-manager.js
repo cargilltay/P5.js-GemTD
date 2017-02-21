@@ -1,16 +1,54 @@
 function UIManager() {
+	this.showGrid = true;
+	this.placeRock = false;
+
 	this.init = function() {
 		this.controlMenuButtons(true);
 		this.initChancePanels();
 		this.showGameMenu();
+		this.bindEventHandlers();
 	}
 
-	this.controlMenuButtons = function(disabled){
+	this.controlMenuButtons = function(disabled) {
 		$('#menu-buttons button').prop("disabled", disabled);
 	}
 
-	this.showGameMenu = function(){
+	this.showGameMenu = function() {
 
+	}
+
+	this.bindEventHandlers = function() {
+		var _this = this;
+		$('#new-gem').on('click', function() {
+			_this.placeRock = true;
+		})
+
+		$('#show-grid input').on('change', function() {
+			_this.showGrid = this.checked;
+		})
+
+		$('#game-menu-options a').on('click', function() {
+			$('#game-menu').hide()
+			uiManager.controlMenuButtons(false)
+			game.hasBegun = true;
+		})
+
+		$('#upgrade-chances').on('click', function() {
+			//mvp --> future
+			//reduce redundance of gemQuality
+
+			//add if gold < price return;
+			//update config quality
+			game.gemQuality++;
+			curQualities.updateQuality(game.gemQuality);
+			nextQualities.updateQuality(game.gemQuality + 1);
+			var curCost = upgradeCosts[game.gemQuality];
+			var nexCost = upgradeCosts[game.gemQuality - 1]
+
+			//update ui quality
+			uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities, curCost);
+			uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities, nexCost);
+		})
 	}
 
 	this.initChancePanels = function() {

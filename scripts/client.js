@@ -5,10 +5,7 @@ var grid = [];
 var w = 20;
 var canvasWidth = 740;
 var canvasHeight = 740;
-var placeRock = false;
 var roundInProgress = false;
-var showGrid = true;
-
 var uiManager = new UIManager();
 var curQualities = new QualityManager();
 var nextQualities = new QualityManager();
@@ -16,45 +13,12 @@ var game = new Game();
 
 function init() {
 	nextQualities.updateQuality(game.gemQuality + 1);
-	bindHandlers();
+	//bindHandlers();
 	setupUI();
 }
 
 function setupUI() {
 	uiManager.init();
-}
-
-function bindHandlers() {
-	$('#new-gem').on('click', function() {
-		placeRock = true;
-	})
-
-	$('#show-grid input').on('change', function() {
-		showGrid = this.checked;
-	})
-
-	$('#game-menu-options a').on('click', function(){
-		$('#game-menu').hide()
-		uiManager.controlMenuButtons(false)
-		game.hasBegun = true;
-	})
-
-	$('#upgrade-chances').on('click', function() {
-		//mvp --> future
-		//reduce redundance of gemQuality
-
-		//add if gold < price return;
-		//update config quality
-		game.gemQuality++;
-		curQualities.updateQuality(game.gemQuality);
-		nextQualities.updateQuality(game.gemQuality + 1);
-		var curCost = upgradeCosts[game.gemQuality];
-		var nexCost = upgradeCosts[game.gemQuality - 1]
-
-		//update ui quality
-		uiManager.updateChancePanel($('#current-chances'), game.gemQuality, curQualities, curCost);
-		uiManager.updateChancePanel($('#next-chances'), game.gemQuality + 1, nextQualities, nexCost);
-	})
 }
 
 function setup() {
@@ -83,12 +47,12 @@ function draw() {
 		return;
 	}
 
-	if (placeRock) {
+	if (uiManager.placeRock) {
 		image(rock, mouseX, mouseY);
 	}
 
 	//show grid
-	if (showGrid) {
+	if (uiManager.showGrid) {
 		for (var i = 0; i < grid.length; i++) {
 			grid[i].show();
 		}
@@ -147,14 +111,14 @@ function mouseClicked() {
 	}
 
 	//place rock (random gem)
-	if (placeRock) {
+	if (uiManager.placeRock) {
 		var closest = closestCell(mouseX, mouseY);
 		if (!closest.isBlocked) {
 			var newGem = new Gem(closest.x, closest.y);
 			newGem.init();
 			game.gems.push(newGem)
 			closest.isBlocked = true;
-			placeRock = false;
+			uiManager.placeRock = false;
 		}
 	}
 }
