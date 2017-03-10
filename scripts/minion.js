@@ -5,7 +5,7 @@ function Minion(xOffset) {
 	this.img = loadImage("assets/minion.png");
 	this.hitPoints = 90;
 	this.isDead = false;
-	this.speed = 5;
+	this.speed = 10;
 	this.armor;
 	this.weakness;
 	this.minimumSpeed;

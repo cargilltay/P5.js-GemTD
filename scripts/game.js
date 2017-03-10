@@ -8,18 +8,30 @@ function Game() {
 	this.gemQuality = 1;
 	this.numMinions = 10;
 	this.hasBegun = false;
+	this.minion
 	this.gems = [];
 	this.minions = [];
+
 
 	this.init = function(difficulty) {
 		this.difficulty = difficulty
 		this.setupBasedOnDifficulty();
 	}
 
+
+	this.populateMinions = function() {
+		var offset = 0;
+		for (var i = 0; i < this.numMinions; i++) {
+			var m = new Minion(offset);
+			this.minions.push(m);
+			offset -= 40;
+		}
+	}
+
+	//unused for now
 	this.setupBasedOnDifficulty = function() {
 		switch (this.difficulty) {
 			case Difficulty.Easy:
-				console.log('easyyy')
 				break;
 			case Difficulty.Normal:
 				break;

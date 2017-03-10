@@ -7,6 +7,7 @@ function UIManager() {
 		this.initChancePanels();
 		this.showGameMenu();
 		this.bindEventHandlers();
+		this.triggerModal();
 	}
 
 	this.controlMenuButtons = function(disabled) {
@@ -15,6 +16,10 @@ function UIManager() {
 
 	this.showGameMenu = function() {
 
+	}
+
+	this.triggerModal = function(){
+		$('#menuModal').modal('show');
 	}
 
 

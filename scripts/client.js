@@ -35,7 +35,7 @@ function setup() {
 	populateGrid();
 
 	//populate minions
-	populateMinions();
+	game.populateMinions();
 }
 
 function draw() {
@@ -67,15 +67,6 @@ function draw() {
 	//if (roundInProgress) {
 	moveMinions()
 		//}
-}
-
-function populateMinions() {
-	var offset = 0;
-	for (var i = 0; i < game.numMinions; i++) {
-		var m = new Minion(offset);
-		game.minions.push(m);
-		offset -= 40;
-	}
 }
 
 function populateGrid() {
