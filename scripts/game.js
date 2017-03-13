@@ -8,9 +8,11 @@ function Game() {
 	this.gemQuality = 1;
 	this.numMinions = 10;
 	this.hasBegun = false;
-	this.minion
+	this.minion;
 	this.gems = [];
 	this.minions = [];
+	this.mode = GameMode.PlayerTurn;
+	this.round = 1;
 
 
 	this.init = function(difficulty) {
@@ -42,6 +44,17 @@ function Game() {
 			case Difficulty.Survival:
 				break;
 		}
+	}
+
+	this.nextMode = function(){
+		this.mode = GameMode.Defend;
+		if(this.mode % 2 == 0){
+			this.mode = GameMode.PlayerTurn;
+		}
+	}
+
+	this.nextRound = function(){
+		this.round++;
 	}
 
 	this.reset = function() {

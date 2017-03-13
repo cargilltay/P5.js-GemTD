@@ -46,7 +46,7 @@ function draw() {
 		return;
 	}
 
-	if (uiManager.placeRock) {
+	if (uiManager.placeRock && game.mode == GameMode.PlayerTurn) {
 		image(rock, mouseX, mouseY);
 	}
 
@@ -64,9 +64,9 @@ function draw() {
 	}
 
 	//show monsters
-	//if (roundInProgress) {
-	moveMinions()
-		//}
+	if (game.mode == GameMode.Defend) {
+		moveMinions()
+	}
 }
 
 function populateGrid() {

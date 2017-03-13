@@ -16,6 +16,12 @@ var Difficulty = {
 	Survival: 5,
 }
 
+var GameMode = {
+	PlayerTurn: 1,
+	Defend: 2,
+	Boss: 3,
+}
+
 var upgradeCosts = [
 	20, //level 2
 	50, //level 3
