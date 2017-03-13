@@ -43,7 +43,7 @@ function UIManager() {
 		})
 
 		$('#game-menu-options a').on('click', function() {
-			$('#game-menu').hide()
+			$('#menuModal').modal('hide');
 			_this.controlMenuButtons(false)
 			var difficulty = _this.mapIntToDifficulty($(this).data('difficulty'))
 			game.init(difficulty)
