@@ -8,7 +8,7 @@ function QualityManager() {
 		flawless: 0,
 		perfect: 0,
 	}
-
+	
 	this.sortOnKeys = function() {
 		var sortable = [];
 		for (var q in this.qualities)
