@@ -18,11 +18,12 @@ function UIManager() {
 
 	}
 
-	this.triggerModal = function(){
+	this.triggerModal = function(reset){
 		$('#menuModal').modal('show');
+		if(reset){
+			$('#confirm-reset').show();
+		}
 	}
-
-
 
 	this.mapIntToDifficulty = function(enumInt) {
 		for (var i in Difficulty) {
@@ -32,10 +33,23 @@ function UIManager() {
 		}
 	}
 
+	this.reset = function(){
+		this.triggerModal(true);
+	}
+
 	this.bindEventHandlers = function() {
 		var _this = this;
 		$('#new-gem').on('click', function() {
 			_this.placeRock = true;
+		})
+
+		$('#keep-gems').on('click', function() {
+
+		})
+
+		$('#reset-game').on('click', function() {
+			game.reset();
+			_this.reset()
 		})
 
 		$('#show-grid input').on('change', function() {
@@ -46,8 +60,9 @@ function UIManager() {
 			$('#menuModal').modal('hide');
 			_this.controlMenuButtons(false)
 			var difficulty = _this.mapIntToDifficulty($(this).data('difficulty'))
-			game.init(difficulty)
-			game.hasBegun = true;
+			game = new Game();
+			game.init(difficulty);
+			nextQualities.updateQuality(game.gemQuality + 1);
 		})
 
 		$('#upgrade-chances').on('click', function() {

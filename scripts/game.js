@@ -7,19 +7,17 @@ function Game() {
 	this.difficulty;
 	this.gemQuality = 1;
 	this.numMinions = 10;
-	this.hasBegun = false;
 	this.minion;
 	this.gems = [];
 	this.minions = [];
 	this.mode = GameMode.PlayerTurn;
 	this.round = 1;
 
-
 	this.init = function(difficulty) {
-		this.difficulty = difficulty
+		this.difficulty = difficulty;
 		this.setupBasedOnDifficulty();
+		this.populateMinions();
 	}
-
 
 	this.populateMinions = function() {
 		var offset = 0;
@@ -58,6 +56,6 @@ function Game() {
 	}
 
 	this.reset = function() {
-
+		
 	}
 }

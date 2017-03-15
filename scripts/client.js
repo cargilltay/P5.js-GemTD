@@ -7,11 +7,10 @@ var roundInProgress = false;
 var uiManager = new UIManager();
 var curQualities = new QualityManager();
 var nextQualities = new QualityManager();
-var game = new Game();
+var game;
 var grid;
 
 function init() {
-	nextQualities.updateQuality(game.gemQuality + 1);
 	grid = new Grid((width / w), (height / w));
 	setupUI();
 }
@@ -32,15 +31,13 @@ function setup() {
 	//populate grid
 	grid.populate();
 
-	//populate minions
-	game.populateMinions();
 }
 
 function draw() {
 
 	background(bg);
 
-	if (!game.hasBegun) {
+	if (!game) {
 		return;
 	}
 
