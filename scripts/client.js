@@ -75,8 +75,14 @@ function mouseClicked() {
 			var newGem = new Gem(closest.x, closest.y);
 			newGem.init();
 			game.gems.push(newGem)
+			game.numGemsToPlace--;
 			closest.isBlocked = true;
 			uiManager.placeRock = false;
+
+			console.log(game.numGemsToPlace);
+			if(game.numGemsToPlace == 0){
+				game.nextMode();
+			}
 		}
 	}
 }

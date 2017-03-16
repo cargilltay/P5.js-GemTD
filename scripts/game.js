@@ -12,6 +12,7 @@ function Game() {
 	this.minions = [];
 	this.mode = GameMode.PlayerTurn;
 	this.round = 1;
+	this.numGemsToPlace = 5;
 
 	this.init = function(difficulty) {
 		this.difficulty = difficulty;
@@ -45,9 +46,17 @@ function Game() {
 	}
 
 	this.nextMode = function(){
-		this.mode = GameMode.Defend;
-		if(this.mode % 2 == 0){
+
+		//is players turn
+		if(this.mode != GameMode.PlayerTurn){
 			this.mode = GameMode.PlayerTurn;
+			
+			$('#new-gem').attr("disabled","");
+			this.numGemsToPlace = 5;
+		}else{
+			this.mode = GameMode.Defend;
+			
+			$('#new-gem').attr("disabled","disabled");
 		}
 	}
 
