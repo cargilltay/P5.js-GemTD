@@ -41,10 +41,6 @@ function draw() {
 		return;
 	}
 
-	if (uiManager.placeRock && game.mode == GameMode.PlayerTurn) {
-		image(rock, mouseX, mouseY);
-	}
-
 	//show grid
 	if (uiManager.showGrid) {
 		grid.showCells();
@@ -54,6 +50,10 @@ function draw() {
 	for (var i = 0; i < game.gems.length; i++) {
 		game.gems[i].show();
 		game.gems[i].fireProjectiles();
+	}
+
+	if (uiManager.placeRock && game.mode == GameMode.PlayerTurn) {
+		image(rock, mouseX, mouseY);
 	}
 
 	//show monsters
