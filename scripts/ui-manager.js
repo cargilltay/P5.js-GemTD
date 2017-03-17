@@ -20,7 +20,7 @@ function UIManager() {
 
 	this.triggerModal = function (reset) {
 		$('#menuModal').modal('show');
-		if (reset) {ß
+		if (reset) {
 			$('#confirm-reset').show();
 		}
 	}
