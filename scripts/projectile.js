@@ -14,20 +14,31 @@ function Projectile(x, y, target) {
 		ellipse(this.x, this.y, this.w, this.h);
 	}
 
-	this.updatePosition = function() {
-		//this.x += this.speed;
-		//this.y += this.speed;
+	this.checkHit = function(){
+		var tarX = this.target.pos.x;
+		var tarY = this.target.pos.y;
+		var pixelOffset = 2;
 
-		//console.log(this.target.pos.x)
-		//console.log(this.x)
-
-		if (this.x == this.target.pos.x && this.y == this.target.pos.y) {
+		//check if within 2 pixels
+		if ((this.x >= tarX - pixelOffset && this.x <= tarX + pixelOffset) && (this.y >= tarY - pixelOffset && this.y <= tarY + pixelOffset)) {
 			this.target.hitPoints -= this.damage;
 			this.hitTarget = true;
 			if (this.target.hitPoints == 0) {
 				console.log(this.target.hitPoints)
 				this.target.isDead = true;
 			}
+			return true;
+		}
+		return false;
+	}
+
+	this.updatePosition = function() {
+		//this.x += this.speed;
+		//this.y += this.speed;
+
+		//console.log(this.target.pos.x)
+		//console.log(this.x)
+		if(this.checkHit){
 			return;
 		}
 
