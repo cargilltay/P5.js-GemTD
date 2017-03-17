@@ -5,7 +5,7 @@ function Cell(colNum, rowNum, doFill) {
 	this.x;
 	this.y;
 
-	this.show = function() {
+	this.show = function () {
 		this.x = this.colNum * w;
 		this.y = this.rowNum * w;
 		stroke(255);

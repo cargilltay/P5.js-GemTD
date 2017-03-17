@@ -2,7 +2,7 @@ function UIManager() {
 	this.showGrid = true;
 	this.placeRock = false;
 
-	this.init = function() {
+	this.init = function () {
 		this.controlMenuButtons(true);
 		this.initChancePanels();
 		this.showGameMenu();
@@ -10,22 +10,22 @@ function UIManager() {
 		this.triggerModal();
 	}
 
-	this.controlMenuButtons = function(disabled) {
+	this.controlMenuButtons = function (disabled) {
 		$('#menu-buttons button').prop("disabled", disabled);
 	}
 
-	this.showGameMenu = function() {
+	this.showGameMenu = function () {
 
 	}
 
-	this.triggerModal = function(reset){
+	this.triggerModal = function (reset) {
 		$('#menuModal').modal('show');
-		if(reset){
+		if (reset) {ß
 			$('#confirm-reset').show();
 		}
 	}
 
-	this.mapIntToDifficulty = function(enumInt) {
+	this.mapIntToDifficulty = function (enumInt) {
 		for (var i in Difficulty) {
 			if (Difficulty.hasOwnProperty(i) && Difficulty[i] === enumInt) {
 				return Difficulty[i];
@@ -33,30 +33,30 @@ function UIManager() {
 		}
 	}
 
-	this.reset = function(){
+	this.reset = function () {
 		this.triggerModal(true);
 	}
 
-	this.bindEventHandlers = function() {
+	this.bindEventHandlers = function () {
 		var _this = this;
-		$('#new-gem').on('click', function() {
+		$('#new-gem').on('click', function () {
 			_this.placeRock = true;
 		})
 
-		$('#keep-gems').on('click', function() {
+		$('#keep-gems').on('click', function () {
 
 		})
 
-		$('#reset-game').on('click', function() {
+		$('#reset-game').on('click', function () {
 			game.reset();
 			_this.reset()
 		})
 
-		$('#show-grid input').on('change', function() {
+		$('#show-grid input').on('change', function () {
 			_this.showGrid = this.checked;
 		})
 
-		$('#game-menu-options a').on('click', function() {
+		$('#game-menu-options a').on('click', function () {
 			$('#menuModal').modal('hide');
 			_this.controlMenuButtons(false)
 			var difficulty = _this.mapIntToDifficulty($(this).data('difficulty'))
@@ -65,7 +65,7 @@ function UIManager() {
 			nextQualities.updateQuality(game.gemQuality + 1);
 		})
 
-		$('#upgrade-chances').on('click', function() {
+		$('#upgrade-chances').on('click', function () {
 			//mvp --> future
 			//reduce redundance of gemQuality
 
@@ -83,14 +83,14 @@ function UIManager() {
 		})
 	}
 
-	this.initChancePanels = function() {
+	this.initChancePanels = function () {
 		$('#current-chances .panel-body').append(this.generateChanceHTML())
 		$('#next-chances .panel-body').append(this.generateChanceHTML())
 		this.updateChancePanel($('#current-chances'), 0, curQualities, null);
 		this.updateChancePanel($('#next-chances'), 0, nextQualities, upgradeCosts[0]);
 	}
 
-	this.generateChanceHTML = function() {
+	this.generateChanceHTML = function () {
 		var chanceHTML = '<div class="gem-percents">' +
 			'<ul>' +
 			'<li class="chipped-percent">Chipped: <span class="percent"></span></li>' +
@@ -103,7 +103,7 @@ function UIManager() {
 		return chanceHTML;
 	}
 
-	this.updateChancePanel = function(panel, currentUpgrade, qualityType, cost) {
+	this.updateChancePanel = function (panel, currentUpgrade, qualityType, cost) {
 		if (panel.attr('id') == "next-chances") {
 			if (cost) {
 				panel.find('.panel-title .cost').text(cost + 'g');

@@ -14,13 +14,13 @@ function Game() {
 	this.round = 1;
 	this.numGemsToPlace = 5;
 
-	this.init = function(difficulty) {
+	this.init = function (difficulty) {
 		this.difficulty = difficulty;
 		this.setupBasedOnDifficulty();
 		this.populateMinions();
 	}
 
-	this.populateMinions = function() {
+	this.populateMinions = function () {
 		var offset = 0;
 		for (var i = 0; i < this.numMinions; i++) {
 			var m = new Minion(offset);
@@ -30,7 +30,7 @@ function Game() {
 	}
 
 	//unused for now
-	this.setupBasedOnDifficulty = function() {
+	this.setupBasedOnDifficulty = function () {
 		switch (this.difficulty) {
 			case Difficulty.Easy:
 				break;
@@ -45,26 +45,26 @@ function Game() {
 		}
 	}
 
-	this.nextMode = function(){
+	this.nextMode = function () {
 
 		//is players turn
-		if(this.mode != GameMode.PlayerTurn){
+		if (this.mode != GameMode.PlayerTurn) {
 			this.mode = GameMode.PlayerTurn;
-			
-			$('#new-gem').attr("disabled","");
+
+			$('#new-gem').attr("disabled", "");
 			this.numGemsToPlace = 5;
-		}else{
+		} else {
 			this.mode = GameMode.Defend;
-			
-			$('#new-gem').attr("disabled","disabled");
+
+			$('#new-gem').attr("disabled", "disabled");
 		}
 	}
 
-	this.nextRound = function(){
+	this.nextRound = function () {
 		this.round++;
 	}
 
-	this.reset = function() {
-		
+	this.reset = function () {
+
 	}
 }

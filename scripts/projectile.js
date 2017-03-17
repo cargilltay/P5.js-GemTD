@@ -8,18 +8,18 @@ function Projectile(x, y, target) {
 	this.target = target;
 	this.hitTarget = false;
 
-	this.show = function() {
+	this.show = function () {
 		//fill(255);
 		stroke(255);
 		ellipse(this.x, this.y, this.w, this.h);
 	}
 
-	this.checkHit = function(){
+	this.checkHit = function () {
 		var tarX = this.target.pos.x;
 		var tarY = this.target.pos.y;
 		var checkWithinPixelOffset = 10;
-		var isWithinOffsetOfX  =  (this.x >= tarX - checkWithinPixelOffset && this.x <= tarX + checkWithinPixelOffset) ? true : false;
-		var isWithinOffsetOfY  =  (this.y >= tarY - checkWithinPixelOffset && this.y <= tarY + checkWithinPixelOffset) ? true : false;
+		var isWithinOffsetOfX = (this.x >= tarX - checkWithinPixelOffset && this.x <= tarX + checkWithinPixelOffset) ? true : false;
+		var isWithinOffsetOfY = (this.y >= tarY - checkWithinPixelOffset && this.y <= tarY + checkWithinPixelOffset) ? true : false;
 
 		//check if within offset
 		if (isWithinOffsetOfX && isWithinOffsetOfY) {
@@ -34,13 +34,13 @@ function Projectile(x, y, target) {
 		return false;
 	}
 
-	this.updatePosition = function() {
+	this.updatePosition = function () {
 		//this.x += this.speed;
 		//this.y += this.speed;
 
 		//console.log(this.target.pos.x)
 		//console.log(this.x)
-		if(this.checkHit()){
+		if (this.checkHit()) {
 			return;
 		}
 

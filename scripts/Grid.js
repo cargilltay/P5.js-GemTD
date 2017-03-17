@@ -3,14 +3,14 @@ function Grid(numRows, numCols) {
 	this.numCols = floor(numCols);
 	this.cells = [];
 
-	this.populate = function() {
+	this.populate = function () {
 		for (var i = 0; i < this.numRows; i++) {
 			for (var j = 0; j < this.numCols; j++) {
 				var fill = false;
-				$(checkPoints).each(function() {
+				$(checkPoints).each(function () {
 					var point = this;
 					var continueOn = false;
-					$(point).each(function() {
+					$(point).each(function () {
 						var c = this;
 						if (c[0] == i && c[1] == j) {
 							fill = true;
@@ -28,15 +28,15 @@ function Grid(numRows, numCols) {
 		}
 	}
 
-	this.showCells = function(){
+	this.showCells = function () {
 		for (var i = 0; i < this.cells.length; i++) {
 			this.cells[i].show();
 		}
 	}
 
-	this.closestCell = function(x, y) {
+	this.closestCell = function (x, y) {
 		var cell = null;
-		$(this.cells).each(function() {
+		$(this.cells).each(function () {
 			var modx = x - (x % 20);
 			var mody = y - (y % 20);
 			if (this.x == modx && this.y == mody) {

@@ -8,14 +8,14 @@ function QualityManager() {
 		flawless: 0,
 		perfect: 0,
 	}
-	
-	this.sortOnKeys = function() {
+
+	this.sortOnKeys = function () {
 		var sortable = [];
 		for (var q in this.qualities)
 			sortable.push([q, this.qualities[q]])
 
 		//make array of sorted quality values
-		sortable.sort(function(a, b) {
+		sortable.sort(function (a, b) {
 			return a[1] - b[1]
 		})
 
@@ -27,7 +27,7 @@ function QualityManager() {
 		this.qualities = tempDict;
 	}
 
-	this.updateQuality = function(level) {
+	this.updateQuality = function (level) {
 		if (this.isMax == true) {
 			return;
 		}

@@ -11,7 +11,7 @@ function Gem(colNum, rowNum) {
 	this.target;
 	this.projectiles = [];
 
-	this.show = function() {
+	this.show = function () {
 		this.x = this.colNum;
 		this.y = this.rowNum;
 		image(this.img, this.x, this.y);
@@ -21,7 +21,7 @@ function Gem(colNum, rowNum) {
 		//this.fireProjectiles();
 	}
 
-	this.scanForMinions = function() {
+	this.scanForMinions = function () {
 		//if(this.hasTarget){
 		//	return;
 		//}
@@ -32,7 +32,7 @@ function Gem(colNum, rowNum) {
 		var yOffsetDown = this.y - 40;
 		var yOffsetUp = this.y + 60;
 
-		$(game.minions).each(function() {
+		$(game.minions).each(function () {
 			//in tower radius
 			//this does not seem to be individual (not just leading minion)
 			if (this.pos.x >= xOffsetLeft && this.pos.x <= xOffsetRight && this.pos.y >= yOffsetDown && this.pos.y <= yOffsetUp) {
@@ -46,11 +46,11 @@ function Gem(colNum, rowNum) {
 		})
 	}
 
-	this.fireProjectiles = function() {
+	this.fireProjectiles = function () {
 		var _this = this;
 		var pNum = 0;
 
-		$(this.projectiles).each(function() {
+		$(this.projectiles).each(function () {
 			if (this.target == null) {
 				return;
 			}
@@ -67,7 +67,7 @@ function Gem(colNum, rowNum) {
 		})
 	}
 
-	this.generateType = function() {
+	this.generateType = function () {
 		var randNum = Math.random() * 100;
 
 		var tManager = curQualities;
@@ -100,7 +100,7 @@ function Gem(colNum, rowNum) {
 	}
 
 
-	this.init = function() {
+	this.init = function () {
 		this.type = this.generateType();
 	}
 }

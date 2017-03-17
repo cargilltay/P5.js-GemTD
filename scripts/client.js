@@ -80,7 +80,7 @@ function mouseClicked() {
 			uiManager.placeRock = false;
 
 			console.log(game.numGemsToPlace);
-			if(game.numGemsToPlace == 0){
+			if (game.numGemsToPlace == 0) {
 				game.nextMode();
 			}
 		}
@@ -89,7 +89,7 @@ function mouseClicked() {
 
 function moveMinions() {
 	var minionNum = 0;
-	$(game.minions).each(function() {
+	$(game.minions).each(function () {
 		if (this.isDead) {
 			console.log("dead")
 			game.minions.splice(minionNum, 1)

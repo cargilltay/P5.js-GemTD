@@ -5,11 +5,11 @@ var endX, endY; // Ending X and Y values of maze
 
 function solveMaze(maze) {
     for (var row = 0; row < maze.length; row++)
-    // Sets boolean Arrays to default values
+        // Sets boolean Arrays to default values
         for (var col = 0; col < maze[row].length; col++) {
-        wasHere[row][col] = false;
-        correctPath[row][col] = false;
-    }
+            wasHere[row][col] = false;
+            correctPath[row][col] = false;
+        }
     var b = recursiveSolve(startX, startY);
     // Will leave you with a boolean array (correctPath) 
     // with the path indicated by true values.

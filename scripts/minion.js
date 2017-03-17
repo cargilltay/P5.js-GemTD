@@ -12,12 +12,12 @@ function Minion(xOffset) {
 	this.livesCost;
 	this.destination = 0;
 
-	this.show = function() {
+	this.show = function () {
 		fill(255);
 		stroke(255);
 		image(this.img, this.pos.x, this.pos.y);
 
-		if(this.hitpoints < 90){
+		if (this.hitpoints < 90) {
 			rect(this.pos.x, this.pos.y + 5, this.w, 2)
 		}
 
@@ -25,7 +25,7 @@ function Minion(xOffset) {
 		this.h = this.img.height;
 	}
 
-	this.updatePosition = function() {
+	this.updatePosition = function () {
 		var curDest = minionDestinations[this.destination];
 
 		if (curDest === undefined) {
@@ -57,7 +57,7 @@ function Minion(xOffset) {
 		}
 	}
 
-	this.hasReachEnd = function() {
+	this.hasReachEnd = function () {
 		return this.x > this.w;
 	}
 }
