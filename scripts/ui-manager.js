@@ -15,7 +15,7 @@ function UIManager() {
 	}
 
 	this.showGameMenu = function () {
-
+		
 	}
 
 	this.triggerModal = function (reset) {

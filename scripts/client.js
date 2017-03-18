@@ -77,11 +77,11 @@ function mouseClicked() {
 			game.gems.push(newGem)
 			game.numGemsToPlace--;
 			closest.isBlocked = true;
-			uiManager.placeRock = false;
 
 			console.log(game.numGemsToPlace);
 			if (game.numGemsToPlace == 0) {
 				game.nextMode();
+				uiManager.placeRock = false;
 			}
 		}
 	}
