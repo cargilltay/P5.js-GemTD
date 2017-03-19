@@ -1,15 +1,10 @@
 function GemFactory() {
-    this.init = function () {
-        this.setupInheritence()
-    }
 
     this.createGem = function (colNum, rowNum) {
         var gem = new Gem();
 
-
         this.generateGemQuality(gem);
         this.generateGemType(gem)
-
 
         gem.img = loadImage("assets/gems/" + gem.quality + gem.type + ".png")
         gem.rowNum = rowNum;
