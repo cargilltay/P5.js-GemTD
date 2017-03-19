@@ -33,16 +33,16 @@ var upgradeCosts = [
 	230,
 ]
 
-var gemTypes = [
-	"Amethyst",
-	"Aquamarine",
-	"Diamond",
-	"Emerald",
-	"Opal",
-	"Ruby",
-	"Sapphire",
-	"Topaz",
-]
+var GemTypeEnum = {
+	Amethyst: 1,
+	Aquamarine: 2,
+	Diamond: 3,
+	Emerald: 4,
+	Opal: 5,
+	Ruby: 6,
+	Sapphire: 7,
+	Topaz: 8,
+}
 
 var checkPoints = [
 	//0

@@ -91,10 +91,9 @@ function Gem(colNum, rowNum) {
 			}
 			chance += tQualities[keys[i + 1]];
 		}
-
-		var randTypeNum = Math.floor(Math.random() * gemTypes.length);
-
-		this.type = gemTypes[randTypeNum];
+		
+		var typeKeys = Object.keys(GemTypeEnum)
+		this.type = typeKeys[typeKeys.length * Math.random() << 0];
 
 		this.img = loadImage("assets/gems/" + this.quality + this.type + ".png")
 	}
