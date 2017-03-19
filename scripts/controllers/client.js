@@ -7,6 +7,7 @@ var roundInProgress = false;
 var uiManager = new UIManager();
 var curQualities = new QualityManager();
 var nextQualities = new QualityManager();
+var gemFactory = new GemFactory();
 var game;
 var grid;
 
@@ -72,8 +73,7 @@ function mouseClicked() {
 	if (uiManager.placeRock) {
 		var closest = grid.closestCell(mouseX, mouseY);
 		if (!closest.isBlocked) {
-			var newGem = new Gem(closest.x, closest.y);
-			newGem.init();
+			var newGem = gemFactory.createGem(closest.x, closest.y);
 			game.gems.push(newGem)
 			game.numGemsToPlace--;
 			closest.isBlocked = true;
