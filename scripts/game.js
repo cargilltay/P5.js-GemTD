@@ -51,7 +51,7 @@ function Game() {
 		if (this.mode != GameMode.PlayerTurn) {
 			this.mode = GameMode.PlayerTurn;
 
-			$('#new-gem').attr("disabled", "");
+			$('#new-gem').removeAttr('disabled');
 			this.numGemsToPlace = 5;
 		} else {
 			this.mode = GameMode.Defend;

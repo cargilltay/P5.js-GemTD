@@ -89,6 +89,10 @@ function mouseClicked() {
 
 function moveMinions() {
 	var minionNum = 0;
+	if (game.minions.length == 0) {
+		game.nextMode();
+	}
+
 	$(game.minions).each(function () {
 		//seperate dead/reach end for possible logic in future
 		if (this.isDead) {
@@ -96,7 +100,7 @@ function moveMinions() {
 			game.minions.splice(minionNum, 1)
 			return;
 		}
-		else if(this.hasReachedEnd){
+		else if (this.hasReachedEnd) {
 			game.minions.splice(minionNum, 1)
 			return;
 		}
