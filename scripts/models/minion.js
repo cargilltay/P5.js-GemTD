@@ -5,6 +5,7 @@ function Minion(xOffset) {
 	this.img = loadImage("assets/minion.png");
 	this.hitPoints = 90;
 	this.isDead = false;
+	this.hasReachEnd = false;
 	this.speed = 10;
 	this.armor;
 	this.weakness;
@@ -28,7 +29,9 @@ function Minion(xOffset) {
 	this.updatePosition = function () {
 		var curDest = minionDestinations[this.destination];
 
+		//hasReachEnd
 		if (curDest === undefined) {
+			this.hasReachEnd = true;
 			return;
 		}
 
@@ -36,6 +39,10 @@ function Minion(xOffset) {
 			this.destination++;
 			curDest = minionDestinations[this.destination];
 			if (curDest === undefined) return;
+		}
+
+		if(this.hasReachEnd()){
+			this.isDead = true;
 		}
 
 		//for velocity/accel reuse this
@@ -55,9 +62,5 @@ function Minion(xOffset) {
 		} else if (this.pos.y > curDest[1]) {
 			this.pos.y -= this.speed;
 		}
-	}
-
-	this.hasReachEnd = function () {
-		return this.x > this.w;
 	}
 }

@@ -90,8 +90,13 @@ function mouseClicked() {
 function moveMinions() {
 	var minionNum = 0;
 	$(game.minions).each(function () {
+		//seperate dead/reach end for possible logic in future
 		if (this.isDead) {
 			console.log("dead")
+			game.minions.splice(minionNum, 1)
+			return;
+		}
+		else if(this.hasReachedEnd){
 			game.minions.splice(minionNum, 1)
 			return;
 		}
