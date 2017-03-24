@@ -69,11 +69,24 @@ function mouseClicked() {
 		return;
 	}
 
+	var closest = grid.closestCell(mouseX, mouseY); 
+
+	//if on something above canvas
+	if(!closest){
+		return;
+	}
+
+	//click on gem
+	if(closest.associatedGem && !uiManager.placeRock){
+		uiManager.displayGemInfo(closest.associatedGem, mouseX, mouseY)
+	}
+	
+
 	//place rock (random gem)
 	if (uiManager.placeRock) {
-		var closest = grid.closestCell(mouseX, mouseY);
 		if (!closest.isBlocked) {
 			var newGem = gemFactory.createGem(closest.x, closest.y);
+			closest.associatedGem = newGem;
 			game.gems.push(newGem)
 			game.numGemsToPlace--;
 			closest.isBlocked = true;

@@ -18,6 +18,11 @@ function UIManager() {
 		
 	}
 
+	this.displayGemInfo = function(gem, x, y){
+		$('#gem-info').css({'top':y,'left':x}).fadeIn('slow');
+
+	}
+
 	this.triggerModal = function (reset) {
 		$('#menuModal').modal('show');
 		if (reset) {

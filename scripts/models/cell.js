@@ -2,6 +2,7 @@ function Cell(colNum, rowNum, doFill) {
 	this.colNum = colNum;
 	this.rowNum = rowNum;
 	this.isBlocked = false;
+	this.associatedGem;
 	this.x;
 	this.y;
 

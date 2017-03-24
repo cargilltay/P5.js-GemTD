@@ -1,8 +1,8 @@
-.menu-item-container h3{
+.menu-item-container h3 {
 	text-decoration: underline;
 }
 
-#menu-buttons button{
+#menu-buttons button {
 	margin-top: 10px;
 }
 
@@ -10,7 +10,7 @@
 	margin-top: 10px;
 }
 
-.gem-percents ul{
+.gem-percents ul {
 	list-style: none;
 	padding: 0;
 }
@@ -19,15 +19,20 @@
 	color: red;
 }
 
-#game-menu{
+#game-menu {
 	padding-bottom: 10px;
 }
 
-#game-menu-options a{
+#game-menu-options a {
 	width:100%;
 	margin-top: 10px;
 }
 
-.close-modal{
+.close-modal {
 	margin-top: 10px;
+}
+
+#gem-info {
+	display: none;
+	position: absolute;
 }
