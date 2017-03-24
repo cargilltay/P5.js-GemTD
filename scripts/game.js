@@ -55,7 +55,7 @@ function Game() {
 			this.numGemsToPlace = 5;
 		} else {
 			this.mode = GameMode.Defend;
-
+			this.populateMinions();
 			$('#new-gem').attr("disabled", "disabled");
 		}
 	}
