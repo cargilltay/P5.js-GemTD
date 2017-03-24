@@ -7,6 +7,7 @@ function Gem() {
 	this.img = rock;
 	this.isKept = false;
 	this.hasTarget = false;
+	this.showRadius = false;
 	this.radius = 100;
 	this.target;
 	this.projectiles = [];
@@ -19,7 +20,10 @@ function Gem() {
 		this.x = this.colNum;
 		this.y = this.rowNum;
 		image(this.img, this.x, this.y);
-		ellipse(this.x + 10, this.y + 10, this.radius, this.radius);
+
+		if(this.showRadius){
+			ellipse(this.x + 10, this.y + 10, this.radius, this.radius);
+		}
 
 		this.scanForMinions();
 		//this.fireProjectiles();

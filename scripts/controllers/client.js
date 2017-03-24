@@ -10,6 +10,7 @@ var nextQualities = new QualityManager();
 var gemFactory = new GemFactory();
 var game;
 var grid;
+var clickedGem;
 
 function init() {
 	grid = new Grid((width / w), (height / w));
@@ -78,7 +79,12 @@ function mouseClicked() {
 
 	//click on gem
 	if(closest.associatedGem && !uiManager.placeRock){
-		uiManager.displayGemInfo(closest.associatedGem, mouseX, mouseY)
+		if(clickedGem){
+			clickedGem.showRadius = false;
+		}
+		clickedGem = closest.associatedGem;
+		clickedGem.showRadius = true;
+		uiManager.displayGemInfo(clickedGem, mouseX, mouseY)
 	}
 	
 
