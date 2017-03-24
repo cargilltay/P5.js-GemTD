@@ -3,6 +3,7 @@ function Gem() {
 	this.rowNum;
 	this.type;
 	this.quality;
+	this.kills;
 	this.level;
 	this.img = rock;
 	this.isKept = false;

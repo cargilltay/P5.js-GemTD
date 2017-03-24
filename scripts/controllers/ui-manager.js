@@ -20,6 +20,17 @@ function UIManager() {
 
 	this.displayGemInfo = function(gem, x, y){
 		$('#gem-info').css({'top':y,'left':x}).fadeIn('slow');
+		$('#gem-type').text(gem.quality + " " + gem.type);
+		
+		//should associate dmg of projectiles with parent gem
+		$('#gem-damage').text("Damage: ");
+
+		$('#gem-cooldown').text("cooldown?");
+		$('#gem-range').text("Radius: " + gem.radius);
+		$('#gem-level').text("Level: " + gem.level);
+		$('#gem-kills').text("Kills: " + gem.kills);
+
+		//$('#gem-type').text(gem.typeProperties.description);
 
 	}
 
