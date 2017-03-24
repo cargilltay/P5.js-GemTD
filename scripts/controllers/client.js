@@ -69,12 +69,16 @@ function mouseClicked() {
 	if (mouseX > canvasWidth || mouseX < 0 || mouseY > canvasHeight || mouseY < 0) {
 		return;
 	}
-
+	
 	var closest = grid.closestCell(mouseX, mouseY); 
 
 	//if on something above canvas
 	if(!closest){
 		return;
+	}
+
+	if(!$(this).attr("id") == "#gem-info"){
+		$('#gem-info').hide();
 	}
 
 	//click on gem
