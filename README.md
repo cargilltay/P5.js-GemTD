@@ -1,6 +1,6 @@
 # P5.js-GemTD
 
-## Node http-server (2nd option) 
+## Local Development 
 
 In order to get around cors issues regarding local files, you must setup a local server for local development. Just 3 simple steps:
 
